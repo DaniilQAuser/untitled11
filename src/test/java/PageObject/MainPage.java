@@ -3,14 +3,16 @@ package PageObject;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 //клики по страницам
 public class MainPage {
-
+    private WebElement catalogButton;
     private AppiumDriver driver;
     private WebDriverWait wait;
 
@@ -18,10 +20,12 @@ public class MainPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
+
+
     //клик по странице каталога
     public void clickCatalogButton() {
-        WebElement catalogButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ru.vkusvill:id/bottom_item_catalog")));
-        catalogButton.click();
+        WebElement catalogCButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ru.vkusvill:id/bottom_item_catalog")));
+        catalogCButton.click();
     }
     //клик по странице Моя карта
     public void clickCartButton() {

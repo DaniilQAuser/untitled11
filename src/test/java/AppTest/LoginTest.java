@@ -2,49 +2,69 @@ package AppTest;
 
 import PageObject.CartPage;
 import PageObject.MainPage;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import Simple.TestData;
 import org.testng.annotations.Test;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.File;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.apache.commons.io.FileUtils;
+import java.util.UUID;
 
-public class LoginTest {
-    private AppiumDriver driver;
-    private CartPage cartPage;
-    private MainPage mainPage;
+public class LoginTest extends BaseTest {
 
-    @BeforeTest
-    public void setUp() throws MalformedURLException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName", "AndroidSDK");
-        capabilities.setCapability("automationName", "Appium");
-        capabilities.setCapability("app", "C:/Games/vkusvill.apk");
-
-        URL appiumServerURL = new URL("http://192.168.0.105:4723/wd/hub");
-
-        driver = new AndroidDriver(appiumServerURL, capabilities);
-        mainPage = new MainPage(driver);
-        cartPage = new CartPage(driver);
-    }
     @Test
-    public void authCart() {
-        mainPage.clickCartButton();
-        cartPage.clickLoginButton();
-        cartPage.enterPhone("9128887921");
-        cartPage.clickNextButton();
-        cartPage.enterCode("111111");
-        cartPage.clickConfirmButton();
+    public void authCart() throws MalformedURLException {
+        setUp(); // вызов метода из BaseTest для настройки драйвера
+
+        CartPage cartPage = new CartPage(driver);
+        MainPage mainPage = new MainPage(driver);
+
+        try {
+            mainPage.clickCartButton();
+            captureScreenshot("clickCartButton"); // Скриншот после клика по кнопке корзины
+            System.out.println("OK: Клик по кнопке корзины выполнен успешно.");
+
+            cartPage.clickLoginButton();
+            captureScreenshot("clickLoginButton"); // Скриншот после клика по кнопке входа
+            System.out.println("OK: Клик по кнопке входа выполнен успешно.");
+
+            cartPage.enterPhone(TestData.getPhoneNumber("truePhoneNumber"));
+            captureScreenshot("enterPhoneNumber"); // Скриншот после ввода номера телефона
+            System.out.println("OK: Ввод номера телефона выполнен успешно.");
+
+            cartPage.clickNextButton();
+            captureScreenshot("clickNextButton"); // Скриншот после клика по кнопке "Далее"
+            System.out.println("OK: Клик по кнопке 'Далее' выполнен успешно.");
+
+            cartPage.enterCode(TestData.getSmsCode("falseSmsCode"));
+            captureScreenshot("enterSmsCode"); // Скриншот после ввода кода подтверждения
+            System.out.println("OK: Ввод кода подтверждения выполнен успешно.");
+
+            // Сей cartPage.clickConfirmButton();
+            System.out.println("OK: Вход в аккаунт выполнен успешно.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            tearDown(); // вызов метода из BaseTest для завершения работы драйвера
+        }
     }
 
-    @AfterTest
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
+    // Метод для сохранения скриншота
+    private void captureScreenshot(String actionName) {
+        try {
+            // Генерация случайного имени файла скриншота
+            String randomFileName = UUID.randomUUID().toString();
+            String screenshotFileName = randomFileName + "_" + actionName + ".png";
+
+            // Получение скриншота
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+            // Копирование скриншота в файл
+            FileUtils.copyFile(screenshot, new File("E/screenReport/" + screenshotFileName));
+            System.out.println("Скриншот сохранен: " + screenshotFileName);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
-

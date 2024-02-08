@@ -7,9 +7,8 @@ import org.openqa.selenium.WebElement;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.io.ByteArrayInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -110,6 +109,30 @@ public class ClickableFooterTestVerOne {
     public void tearDown() {
         if (driver != null) {
             driver.quit();
+        }
+    }
+
+    public static class BaseTest {
+        protected AppiumDriver driver;
+
+        @BeforeClass
+        public void setUp() throws MalformedURLException {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("deviceName", "AndroidSDK");
+            capabilities.setCapability("automationName", "Appium");
+            capabilities.setCapability("app", "C:/Games/vkusvill.apk");
+
+            URL appiumServerURL = new URL("http://192.168.0.105:4723/wd/hub");
+
+            driver = new AndroidDriver(appiumServerURL, capabilities);
+        }
+
+        @AfterClass
+        public void tearDown() {
+            if (driver != null) {
+                driver.quit();
+            }
         }
     }
 }
