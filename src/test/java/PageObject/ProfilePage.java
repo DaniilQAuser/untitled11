@@ -9,12 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 //объекты страницы моя карта
-public class CartPage {
+public class ProfilePage {
 
     private AppiumDriver driver;
     private WebDriverWait wait;
 
-    public CartPage(AppiumDriver driver) {
+    public ProfilePage(AppiumDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }

@@ -1,6 +1,6 @@
 package Simple;
 
-import PageObject.CartPage;
+import PageObject.ProfilePage;
 import PageObject.MainPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class AppCoffe {
     private AppiumDriver driver;
-    private CartPage cartPage;
+    private ProfilePage cartPage;
     private MainPage mainPage;
 
     @BeforeTest
@@ -28,11 +28,11 @@ public class AppCoffe {
 
         driver = new AndroidDriver(appiumServerURL, capabilities);
         mainPage = new MainPage(driver);
-        cartPage = new CartPage(driver);
+        cartPage = new ProfilePage(driver);
     }
     @Test
     public void authCart() {
-        mainPage.clickCartButton();
+        //mainPage.clickCartButton();
         cartPage.clickLoginButton();
         cartPage.enterPhone("9128887921");
         cartPage.clickNextButton();
