@@ -37,11 +37,11 @@ public class MainPage extends BaseTest {
     }
     //проверки наличия кнопок
 
-    //профиль
+    //Моя карта
     public boolean isProfilePageIsDisplayed() {
             try {
-                WebElement loginButton = waitForVisibility(By.id(MainPageSelectors.PROFILE_BUTTON.getSelector()));
-                return loginButton.isDisplayed();
+                WebElement profileButton = waitForVisibility(By.id(MainPageSelectors.PROFILE_BUTTON.getSelector()));
+                return profileButton.isDisplayed();
             } catch (TimeoutException e) {
                 return false;
             }
@@ -49,8 +49,8 @@ public class MainPage extends BaseTest {
     //каталог
     public boolean isCatalogPageIsDisplayed() {
         try {
-            WebElement loginButton = waitForVisibility(By.id(MainPageSelectors.CATALOG_BUTTON.getSelector()));
-            return loginButton.isDisplayed();
+            WebElement catalogButton = waitForVisibility(By.id(MainPageSelectors.CATALOG_BUTTON.getSelector()));
+            return catalogButton.isDisplayed();
         } catch (TimeoutException e) {
             return false;
         }
@@ -58,8 +58,8 @@ public class MainPage extends BaseTest {
     //Магазины
     public boolean isShopsPageIsDisplayed() {
         try {
-            WebElement loginButton = waitForVisibility(By.id(MainPageSelectors.SHOPS_BUTTON.getSelector()));
-            return loginButton.isDisplayed();
+            WebElement shopsButton = waitForVisibility(By.id(MainPageSelectors.SHOPS_BUTTON.getSelector()));
+            return shopsButton.isDisplayed();
         } catch (TimeoutException e) {
             return false;
         }
@@ -67,8 +67,8 @@ public class MainPage extends BaseTest {
     //Профиль(история)
     public boolean isHistoryPageIsDisplayed() {
         try {
-            WebElement loginButton = waitForVisibility(By.id(MainPageSelectors.HISTORY_BUTTON.getSelector()));
-            return loginButton.isDisplayed();
+            WebElement historyButton = waitForVisibility(By.id(MainPageSelectors.HISTORY_BUTTON.getSelector()));
+            return historyButton.isDisplayed();
         } catch (TimeoutException e) {
             return false;
         }
@@ -76,8 +76,8 @@ public class MainPage extends BaseTest {
     //Поддержка
     public boolean isSupportPageIsDisplayed() {
         try {
-            WebElement loginButton = waitForVisibility(By.id(MainPageSelectors.SUPPORT_BUTTON.getSelector()));
-            return loginButton.isDisplayed();
+            WebElement supportButton = waitForVisibility(By.id(MainPageSelectors.SUPPORT_BUTTON.getSelector()));
+            return supportButton.isDisplayed();
         } catch (TimeoutException e) {
             return false;
         }
@@ -90,23 +90,19 @@ public class MainPage extends BaseTest {
     public void clickCatalogButton() {
         clickElement(By.id(MainPageSelectors.CATALOG_BUTTON.getSelector()));
     }
-    //клик по странице Магазины - потом подумаю как реализовать, аффектит на други проверки
-    /*public void clickShopsButton() {
-        WebElement shopsButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ru.vkusvill:id/bottom_item_shops")));
-        shopsButton.click();
-
-        WebElement geoButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")));
-        geoButton.click();
-
-        WebElement nameShops = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//android.widget.TextView[@text=\"Магазины\"])[1]")));
-        nameShops.isDisplayed();
-    }*/
+    //клик по странице Магазины
+    public void clickShopsButton() {
+        clickElement(By.id(MainPageSelectors.SHOPS_BUTTON.getSelector()));
+    }
     //клик по странице Поддержка
     public void clickSupportButton() {
         clickElement(By.id(MainPageSelectors.SUPPORT_BUTTON.getSelector()));
     }
-    //клик по странице История
+    //клик по странице История(Профиль)
     public void clickHistoryButton() {
-        clickElement(By.id(MainPageSelectors.SUPPORT_BUTTON.getSelector()));
+        clickElement(By.id(MainPageSelectors.HISTORY_BUTTON.getSelector()));
+    }
+    public void clickGeoButton() {
+        clickElement(By.id(MainPageSelectors.GEO_BUTTON.getSelector()));
     }
 }

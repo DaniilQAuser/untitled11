@@ -26,7 +26,7 @@ public class BaseTest {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "AndroidSDK");
         capabilities.setCapability("automationName", "Appium");
-        capabilities.setCapability("app", "C:/Games/login.apk");
+        capabilities.setCapability("app", "C:/Games/vkusvill.apk");
 
         URL appiumServerURL = new URL("http://192.168.0.105:4723/wd/hub");
 
@@ -41,6 +41,10 @@ public class BaseTest {
     // Метод для ожидания видимости элемента
     public WebElement waitForVisibility(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+    // Метод ацепта геолокации
+     public void acceptGeo() {
+
     }
     // Метод для сохранения скриншота
     public void captureScreenshot(String actionName) {
