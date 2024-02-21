@@ -1,41 +1,38 @@
-package PageObject;
+/*package PageObject;
 
 import org.openqa.selenium.TimeoutException;
+import AppTest.BaseTest;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import AppTest.BaseTest;
 import java.time.Duration;
 
-public class MainPage extends BaseTest {
-
-    public static final By CATALOG_BUTTON = By.id("ru.vkusvill:id/bottom_item_catalog");
+public class LoginPage extends BaseTest {
+    public static final By LOGIN_BY_PHONE_BUTTON = By.id("ru.vkusvill:id/btn_login_by_phone");
     public static final By PROFILE_BUTTON = By.id("ru.vkusvill:id/bottom_item_profile");
     public static final By SHOPS_BUTTON = By.id("ru.vkusvill:id/bottom_item_shops");
     public static final By GEO_BUTTON = By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
     public static final By HISTORY_BUTTON = By.id("ru.vkusvill:id/bottom_item_history");
     public static final By SUPPORT_BUTTON = By.id("ru.vkusvill:id/bottom_item_support");
 
-    public MainPage(AppiumDriver driver) {
+    public LoginPage(AppiumDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     //проверки наличия кнопок
 
     //Моя карта
-    public boolean isProfilePageIsDisplayed() {
-        return isElementVisible(PROFILE_BUTTON);
+    public boolean isLoginBtnIsDisplayed() {
+        return isElementVisible(LOGIN_BY_PHONE_BUTTON);
     }
     //каталог
-    public boolean isCatalogPageIsDisplayed() {
-            return isElementVisible(CATALOG_BUTTON);
+    //public boolean isCatalogPageIsDisplayed() {
+        return isElementVisible(CATALOG_BUTTON);
     }
     //Магазины
     public boolean isShopsPageIsDisplayed() {
-            return isElementVisible(SHOPS_BUTTON);
+        return isElementVisible(SHOPS_BUTTON);
     }
     //Профиль(история)
     public boolean isHistoryPageIsDisplayed() {
@@ -68,4 +65,4 @@ public class MainPage extends BaseTest {
     public void clickGeoButton() {
         clickElement(GEO_BUTTON);
     }
-}
+}*/

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 //объекты страницы моя карта
+
 public class ProfilePage {
 
     private AppiumDriver driver;

@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TimeoutException;
 
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,6 +21,7 @@ import java.util.UUID;
 public class BaseTest {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
+
 
     public void setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -42,9 +44,14 @@ public class BaseTest {
     public WebElement waitForVisibility(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    // Метод ацепта геолокации
-     public void acceptGeo() {
-
+    // Метод проверки видимости элемента
+    public boolean isElementVisible(By locator) {
+        try {
+            waitForVisibility(locator);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
     // Метод для сохранения скриншота
     public void captureScreenshot(String actionName) {

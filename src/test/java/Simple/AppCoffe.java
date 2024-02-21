@@ -1,6 +1,6 @@
 package Simple;
 
-import PageObject.ProfilePage;
+/*import PageObject.ProfilePage;
 import PageObject.MainPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppCoffe {
-    private AppiumDriver driver;
+    public AppiumDriver driver;
     private ProfilePage cartPage;
     private MainPage mainPage;
 
@@ -27,17 +27,16 @@ public class AppCoffe {
         URL appiumServerURL = new URL("http://192.168.0.105:4723/wd/hub");
 
         driver = new AndroidDriver(appiumServerURL, capabilities);
-        mainPage = new MainPage(driver);
         cartPage = new ProfilePage(driver);
     }
     @Test
     public void authCart() {
-        //mainPage.clickCartButton();
+        mainPage.clickProfileButton();
         cartPage.clickLoginButton();
         cartPage.enterPhone("9128887921");
         cartPage.clickNextButton();
         cartPage.enterCode("111111");
-        //Сей cartPage.clickConfirmButton();
+        cartPage.clickConfirmButton();
     }
 
     @AfterTest
@@ -46,4 +45,4 @@ public class AppCoffe {
             driver.quit();
         }
     }
-}
+}*/
