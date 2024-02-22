@@ -1,24 +1,30 @@
 package Simple;
 
+import org.junit.Test;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Test;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TestJsonType {
+
+    private final Set<String> checkedFields = new HashSet<>();
 
     @Test
     public void testJsonFieldTypes() {
         try {
             // Чтение содержимого JSON файла
-            String jsonString = new String(Files.readAllBytes(Paths.get("response_339.json")));
+            String jsonString = new String(Files.readAllBytes(Paths.get("response_151.json")));
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONObject data = jsonObject.getJSONObject("data");
             JSONObject cart = data.getJSONObject("cart");
 
             // Проверка типов данных значений полей корзины
+            checkFieldType(data, "cart", JSONObject.class);
             checkFieldType(cart, "id", Integer.class);
             checkFieldType(cart, "number", String.class);
             checkFieldType(cart, "client_type_id", Integer.class);
@@ -43,12 +49,16 @@ public class TestJsonType {
             checkFieldType(cart, "products", JSONArray.class);
             checkFieldType(cart, "combo", JSONArray.class);
             checkFieldType(cart, "cutlery", Integer.class);
-            checkFieldType(cart, "cart_weight", Double.class);
+            checkFieldType(cart, "cart_weight", BigDecimal.class);
             checkFieldType(cart, "is_not_need_slots", Boolean.class);
             checkFieldType(cart, "first_snow", JSONObject.class);
             checkFieldType(cart, "toggle_and_texts", JSONObject.class);
+            checkFieldType(data, "pay_ways", JSONArray.class);
+            checkFieldType(data, "bonuses", JSONArray.class);
+            checkFieldType(data, "user_cards", JSONArray.class);
 
             // Проверка типов данных значений полей вложенных объектов
+            // (например, поля "shops_available", "shops_recommend_available", "lp", "delivery_time", "remains")
             if (cart.has("shops_available")) {
                 JSONArray shopsAvailable = cart.getJSONArray("shops_available");
                 for (int i = 0; i < shopsAvailable.length(); i++) {
@@ -74,10 +84,18 @@ public class TestJsonType {
                     JSONObject lpItem = lp.getJSONObject(i);
                     checkFieldType(lpItem, "id", Integer.class);
                     checkFieldType(lpItem, "name", String.class);
-                    checkFieldType(lpItem, "remains", Double.class);
+                    checkFieldType(lpItem, "remains", BigDecimal.class);
                     checkFieldType(lpItem, "photo", String.class);
                     checkFieldType(lpItem, "unit", String.class);
                 }
+            }
+
+            if (cart.has("delivery_time")) {
+                JSONObject deliveryTime = cart.getJSONObject("delivery_time");
+                checkFieldType(deliveryTime, "supply_date", String.class);
+                checkFieldType(deliveryTime, "slot_since", String.class);
+                checkFieldType(deliveryTime, "slot_until", String.class);
+                checkFieldType(deliveryTime, "slot_during", String.class);
             }
 
             if (cart.has("products")) {
@@ -138,12 +156,11 @@ public class TestJsonType {
                         checkFieldType(resources, "is_show_both", Boolean.class);
                         checkFieldType(resources, "text", String.class);
                         checkFieldType(resources, "desc_text_color", String.class);
+                        checkFieldType(resources, "icon", JSONObject.class);
 
-                        if (resources.has("icon")) {
-                            JSONObject icon = resources.getJSONObject("icon");
-                            checkFieldType(icon, "icon_basic", String.class);
-                            checkFieldType(icon, "icon_pers", String.class);
-                        }
+                        JSONObject icon = resources.getJSONObject("icon");
+                        checkFieldType(icon, "icon_basic", String.class);
+                        checkFieldType(icon, "icon_pers", String.class);
                     }
                 }
             }
@@ -156,6 +173,8 @@ public class TestJsonType {
                     checkFieldType(comboItem, "quantity", Integer.class);
                     checkFieldType(comboItem, "remains_quantity", Integer.class);
                     checkFieldType(comboItem, "unit", String.class);
+                    checkFieldType(comboItem, "prices", JSONObject.class);
+                    checkFieldType(comboItem, "resources", JSONObject.class);
 
                     if (comboItem.has("components")) {
                         JSONArray components = comboItem.getJSONArray("components");
@@ -194,36 +213,64 @@ public class TestJsonType {
                         checkFieldType(resources, "is_show_both", Boolean.class);
                         checkFieldType(resources, "text", String.class);
                         checkFieldType(resources, "desc_text_color", String.class);
+                        checkFieldType(resources, "icon", JSONObject.class);
 
-                        if (resources.has("icon")) {
-                            JSONObject icon = resources.getJSONObject("icon");
-                            checkFieldType(icon, "icon_basic", String.class);
-                            checkFieldType(icon, "icon_pers", String.class);
-                        }
+                        JSONObject icon = resources.getJSONObject("icon");
+                        checkFieldType(icon, "icon_basic", String.class);
+                        checkFieldType(icon, "icon_pers", String.class);
                     }
                 }
             }
 
-            if (cart.has("first_snow")) {
-                JSONObject firstSnow = cart.getJSONObject("first_snow");
-                checkFieldType(firstSnow, "is_high_demand", Boolean.class);
-                checkFieldType(firstSnow, "sum_min", Integer.class);
-                checkFieldType(firstSnow, "sum_min_min", Integer.class);
-                checkFieldType(firstSnow, "sum_min_max", Integer.class);
+            // Проверка типов данных значений полей в массивах pay_ways, bonuses и user_cards
+            if (data.has("pay_ways")) {
+                JSONArray payWays = data.getJSONArray("pay_ways");
+                for (int i = 0; i < payWays.length(); i++) {
+                    JSONObject payWay = payWays.getJSONObject(i);
+                    checkFieldType(payWay, "id", Integer.class);
+                    checkFieldType(payWay, "name", String.class);
+                    checkFieldType(payWay, "icon", String.class);
+                    checkFieldType(payWay, "has_email", Boolean.class);
+                    checkFieldType(payWay, "has_bonus_payment", Boolean.class);
+                    checkFieldType(payWay, "is_active", Boolean.class);
+                }
             }
 
-            if (cart.has("toggle_and_texts")) {
-                JSONObject toggleAndTexts = cart.getJSONObject("toggle_and_texts");
-                checkFieldType(toggleAndTexts, "service_type_icon", String.class);
-                checkFieldType(toggleAndTexts, "service_icon", String.class);
-                checkFieldType(toggleAndTexts, "during_text", String.class);
-                checkFieldType(toggleAndTexts, "slots_text", String.class);
-                checkFieldType(toggleAndTexts, "delivery_text", String.class);
-                checkFieldType(toggleAndTexts, "express_toggle", Boolean.class);
-                checkFieldType(toggleAndTexts, "communication", Integer.class);
+            if (data.has("bonuses")) {
+                JSONArray bonuses = data.getJSONArray("bonuses");
+                for (int i = 0; i < bonuses.length(); i++) {
+                    JSONObject bonus = bonuses.getJSONObject(i);
+                    checkFieldType(bonus, "code", String.class);
+                    checkFieldType(bonus, "name", String.class);
+                    checkFieldType(bonus, "description", String.class);
+                    checkFieldType(bonus, "icon", String.class);
+                    checkFieldType(bonus, "quantity", BigDecimal.class);
+                    checkFieldType(bonus, "max_sum", BigDecimal.class);
+                    checkFieldType(bonus, "is_active", Boolean.class);
+                    checkFieldType(bonus, "is_toggle_visible", Boolean.class);
+                    checkFieldType(bonus, "is_toggle_active", Boolean.class);
+                }
             }
 
-            // Проверка типов данных значений полей вложенных объектов
+            if (data.has("user_cards")) {
+                JSONArray userCards = data.getJSONArray("user_cards");
+                for (int i = 0; i < userCards.length(); i++) {
+                    JSONObject userCard = userCards.getJSONObject(i);
+                    checkFieldType(userCard, "id", Integer.class);
+                    checkFieldType(userCard, "pan", String.class);
+                    checkFieldType(userCard, "payment_system", String.class);
+                    checkFieldType(userCard, "pay_type", Integer.class);
+                    checkFieldType(userCard, "bank_name", String.class);
+                    checkFieldType(userCard, "is_default", Boolean.class);
+                    checkFieldType(userCard, "spasibo_amount", BigDecimal.class);
+                    checkFieldType(userCard, "is_promote_spasibo", Boolean.class);
+                }
+            }
+
+            // Вывод не проверенных полей и их значений в консоль
+            printUncheckedFields(cart);
+            printUncheckedFields(data);
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -238,7 +285,29 @@ public class TestJsonType {
         }
         Object value = object.get(field);
         if (!expectedType.isInstance(value)) {
-            System.out.println("Поле \"" + field + "\": Ожидался тип " + expectedType.getSimpleName() + ", но получен " + value.getClass().getSimpleName());
+            System.out.println("Поле \"" + field + "\": Ожидался тип " + expectedType.getSimpleName() +
+                    ", но получен " + value.getClass().getSimpleName());
+        }
+        checkedFields.add(field); // Добавляем проверенное поле в множество проверенных полей
+    }
+
+    // Метод для вывода не проверенных полей и их значений в консоль
+    private void printUncheckedFields(JSONObject jsonObject) {
+        Set<String> uncheckedFields = new HashSet<>(jsonObject.keySet());
+        uncheckedFields.removeAll(checkedFields); // Удаляем проверенные поля
+        if (!uncheckedFields.isEmpty()) {
+            System.out.println("Непроверенные поля:");
+            for (String field : uncheckedFields) {
+                System.out.println("Поле \"" + field + "\": Значение - " + jsonObject.get(field));
+            }
+        }
+    }
+
+    // Метод для вывода всех полей и их значений в консоль
+    private void getAllFieldsAndValues(JSONObject jsonObject) {
+        System.out.println("Все поля и их значения:");
+        for (String field : jsonObject.keySet()) {
+            System.out.println("Поле \"" + field + "\": Значение - " + jsonObject.get(field));
         }
     }
 }

@@ -1,0 +1,284 @@
+{
+  "data": {
+    "cart": {
+      "id": -1989475905,
+      "number": "7412321",
+      "client_type_id": 2,
+      "shop_id": 4795,
+      "shop_extend_id": 3736,
+      "shops_available": [
+        {
+          "shop_id": 5432,
+          "shop_extend_id": 0
+        }
+      ],
+      "shops_recommend_available": [
+        {
+          "shop_id": 4324,
+          "service_id": 3,
+          "delivery_time": {
+            "supply_date": "24.02.2024",
+            "slot_since": "",
+            "slot_until": "",
+            "slot_during": "02:00:00"
+          }
+        }
+      ],
+      "update_date": "2023-12-28T23:59:00+03:00",
+      "expiration_date": "2023-12-28T23:59:00+03:00",
+      "pay_way_id": 0,
+      "service_id": 1,
+      "service_type": 1,
+      "is_pickup": false,
+      "delivery_time": {
+        "supply_date": "24.02.2024",
+        "slot_since": "",
+        "slot_until": "",
+        "slot_during": "02:00:00"
+      },
+      "delivery_type_id": 4,
+      "delivery_price": 200,
+      "button": 2,
+      "packaging_id": null,
+      "lp": [
+        {
+          "id": 1245,
+          "name": "",
+          "remains": 2.3,
+          "photo": "",
+          "unit": "кг"
+        }
+      ],
+      "prices": {
+        "sum_discount": 1560,
+        "sum_retail": 1800,
+        "sum_coupon": 1080,
+        "has_discount_rp": true,
+        "has_discount_special": false,
+        "client_sum_min": 500
+      },
+      "delivery": {
+        "address": {
+          "coordinates": {
+            "latitude": 55.642596,
+            "longitude": 37.341376
+          },
+          "comment_courier": "",
+          "address": "",
+          "flat": "",
+          "doorphone": "",
+          "entrance": "",
+          "floor": "",
+          "without_home": 0,
+          "is_private_home": false,
+          "country": "",
+          "area": "",
+          "district1": "",
+          "district2": "",
+          "province1": "",
+          "province2": "",
+          "street": "",
+          "house": "",
+          "is_change_coordinates": false,
+          "address_client_id": 124,
+          "address_label": "",
+          "other_name": "",
+          "other_phone": ""
+        },
+        "different_prices": [
+          {
+            "cart_sum_min": 1000,
+            "price": 200,
+            "is_chosen": true
+          }
+        ],
+        "price_min": 0,
+        "price_max": 300,
+        "recommend_service": [
+          {
+            "shop_id": 4324,
+            "service_id": 3,
+            "delivery_time": {
+              "supply_date": "",
+              "slot_since": "",
+              "slot_until": "",
+              "slot_during": ""
+            }
+          }
+        ]
+      },
+      "products": [
+        {
+          "id": "",
+          "product_id": 234,
+          "is_green_price": false,
+          "quantity": 2,
+          "amount": 2,
+          "cutlery_product_type": 2,
+          "exception_text": "",
+          "remains": [
+            {
+              "shop_id": 1254,
+              "shop_extend_id": 765,
+              "quantity": 42.332,
+              "partner_id": 21,
+              "partner_type_id": 2,
+              "warehouse": 9999
+            }
+          ],
+          "prices": {
+            "price_discount": 180,
+            "price_retail": 200,
+            "discount": 10,
+            "discount_percent": 20,
+            "sum_discount": 360,
+            "sum_retail": 400,
+            "sum_loyal": 360,
+            "price_type": 6,
+            "privilege_id": 2095,
+            "privilege_type": 1091,
+            "privilege_used": 1,
+            "ext1": "",
+            "ext2": "",
+            "ext3": "",
+            "result_code": 30
+          },
+          "properties": {
+            "name": "",
+            "unit": "шт",
+            "photo": "",
+            "weight_max": 0,
+            "weight_min": 0,
+            "weight_avg": 0,
+            "is_loose": false,
+            "weight_step": 1,
+            "is_freeze": false,
+            "is_red_price": false,
+            "is_new_price": false,
+            "is_alcohol": false,
+            "weight": 0,
+            "has_no_bonus_pay": false,
+            "is_perishable": false
+          },
+          "resources": {
+            "is_group_price": false,
+            "title_prefix": "",
+            "product_separator": "",
+            "color": "",
+            "price_text_color": "",
+            "is_show_both": false,
+            "text": "",
+            "desc_text_color": "",
+            "icon": {
+              "icon_basic": "",
+              "icon_pers": ""
+            }
+          }
+        }
+      ],
+      "combo": [
+        {
+          "components": [
+            {
+              "id": 21,
+              "quantity": 1,
+              "photo": "",
+              "name": ""
+            }
+          ],
+          "id": 21,
+          "quantity": 2,
+          "remains_quantity": 0,
+          "unit": "шт",
+          "prices": {
+            "price_discount": 180,
+            "price_retail": 200,
+            "discount": 10,
+            "discount_percent": 20,
+            "sum_discount": 360,
+            "sum_retail": 400,
+            "sum_loyal": 360,
+            "price_type": 6,
+            "privilege_id": 2095,
+            "privilege_type": 1091,
+            "privilege_used": 1,
+            "ext1": "",
+            "ext2": "",
+            "ext3": "",
+            "result_code": 30
+          },
+          "resources": {
+            "is_group_price": false,
+            "title_prefix": "",
+            "product_separator": "",
+            "color": "",
+            "price_text_color": "",
+            "is_show_both": false,
+            "text": "",
+            "desc_text_color": "",
+            "icon": {
+              "icon_basic": "",
+              "icon_pers": ""
+            }
+          }
+        }
+      ],
+      "cutlery": 0,
+      "cart_weight": 1.34,
+      "is_not_need_slots": false,
+      "first_snow": {
+        "is_high_demand": false,
+        "sum_min": 500,
+        "sum_min_min": 500,
+        "sum_min_max": 500
+      },
+      "toggle_and_texts": {
+        "service_type_icon": "",
+        "service_icon": "",
+        "during_text": "",
+        "slots_text": "",
+        "delivery_text": "",
+        "express_toggle": true,
+        "communication": 0
+      }
+    },
+    "pay_ways": [
+      {
+        "id": 2,
+        "name": "",
+        "icon": "",
+        "has_email": true,
+        "has_bonus_payment": true,
+        "is_active": true
+      }
+    ],
+    "bonuses": [
+      {
+        "code": "vkusvill",
+        "name": "",
+        "desciption": "",
+        "icon": "",
+        "quantity": 23.6,
+        "max_sum": 34.9,
+        "is_active": true,
+        "is_toggle_visible": true,
+        "is_toggle_active": false
+      }
+    ],
+    "user_cards": [
+      {
+        "id": 123,
+        "pan": "546940XXXXXX6272",
+        "payment_system": "",
+        "pay_type": 0,
+        "bank_name": "",
+        "is_default": true,
+        "spasibo_amount": 21.8,
+        "is_promote_spasibo": false
+      }
+    ]
+  },
+  "errors": [],
+  "status": "success"
+}
+

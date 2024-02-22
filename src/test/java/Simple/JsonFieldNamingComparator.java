@@ -11,15 +11,15 @@ public class JsonFieldNamingComparator {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "curl",
                     "--location",
-                    "https://test-basket.fullstack.vkusvill.ru/api/v1/cart?new=1",
+                    "https://test-basket.fullstack.vkusvill.ru/api/v1/cart",
                     "--header", "user-agent: vkusvill/3.0.22 (Android; 30)",
                     "--header", "authorization: Basic dmt1c3ZpbGw6NjckI2hqZGZAQA==",
                     "--header", "x-vkusvill-device: xiaomi",
                     "--header", "x-vkusvill-source: 4",
                     "--header", "x-vkusvill-version: 3.0.22 (300022)",
-                    "--header", "x-vkusvill-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJjYXJkIjoiRzkxNjE0NyIsInZlcnNpb24iOjJ9.gfZCLsOyXFiMcbpQvLJ6O1uOeIm08sPwyOJZHl7vLYDGptdkB_8-02EwUS-yVHkGNp8Mnb3oi4lHbnRbYKtfRVUD23HrH82j82mPU4Ok_I1hlozm6aucZKJbIzIwqAlyEXTBz9FBVGmXJuJhqvzzgtbzp1lj0IfQtNqU6vu1XK4",
+                    "--header", "x-vkusvill-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJjYXJkIjoiTzY2NTAzNCIsInZlcnNpb24iOjJ9.EMxW-3eu4rN_n6KfvDm-sRZtGq2J9J0GBHHUEbl_6sIQFU4Xw58rNUpmz9w6_klhlsk06SERIqU1ekvoFs6yFeS2JhNzHh77ZjCET9vdJCmyMuphEDz8_YOu3ZQ8mgZWWy5Dr4bCKCxQGjV-TO9hqQ-7ViyBNidObaiQa3uXszc",
                     "--header", "x-vkusvill-model: Xiaomi Redmi Note 8 Pro",
-                    "--header", "x-vkusvill-number: G916147"
+                    "--header", "x-vkusvill-number: o665034"
             );
 
             // Установка перенаправления стандартного вывода и стандартной ошибки в потоки Java
@@ -47,6 +47,21 @@ public class JsonFieldNamingComparator {
             // Ожидание завершения выполнения команды
             int exitCode = process.waitFor();
             System.out.println("Выполнение cURL запроса завершено. Код завершения: " + exitCode);
+
+            // Получение вывода ошибок cURL
+            InputStream errorStream = process.getErrorStream();
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(errorStream));
+            StringBuilder errorResponse = new StringBuilder();
+            String errorLine;
+            while ((errorLine = errorReader.readLine()) != null) {
+                errorResponse.append(errorLine);
+                errorResponse.append("\n");
+            }
+
+            // Вывод ошибок cURL в консоль, если они есть
+            if (errorResponse.length() > 0) {
+                System.out.println("Ошибка cURL запроса: " + errorResponse.toString());
+            }
 
             // Преобразование тела ответа в строку
             String responseJson = response.toString();

@@ -1,0 +1,119 @@
+{
+  "data": {
+    "cart": {
+      "id": -1988092476,
+      "number": "o665034",
+      "client_type_id": 2,
+      "shop_id": 4795,
+      "extend_shop_id": 0,
+      "update_date": null,
+      "expiration_date": "2024-02-22T20:59:59.000000Z",
+      "pay_way_id": 0,
+      "service_id": 32,
+      "service_type": 1,
+      "is_pickup": false,
+      "delivery_type_id": 17,
+      "delivery_price": 0,
+      "delivery_time": {
+        "date_supply": "2024-02-22T13:23:35.000000Z",
+        "slot_since": null,
+        "slot_until": null,
+        "slot_during": "2024-02-21T22:00:00.000000Z"
+      },
+      "packaging_id": null,
+      "button": 2,
+      "cutlery": 0,
+      "is_not_need_slots": false,
+      "shops_available": [],
+      "shops_recommend_available": [],
+      "lp": [],
+      "prices": null,
+      "delivery": [],
+      "products": [
+        {
+          "id": 46277,
+          "greenPrice": false,
+          "quantity": 1
+        },
+        {
+          "id": 44305,
+          "greenPrice": false,
+          "quantity": 1
+        },
+        {
+          "id": 14526,
+          "greenPrice": false,
+          "quantity": 1
+        },
+        {
+          "id": 257736,
+          "greenPrice": false,
+          "quantity": 1
+        }
+      ],
+      "combo": [],
+      "toggle_and_texts": [],
+      "cart_weight": null
+    },
+    "pay_ways": [
+      {
+        "id": 0,
+        "name": "Оплата картой",
+        "icon": null,
+        "has_email": true,
+        "has_bonus_payment": true,
+        "is_active": true,
+        "is_active_geo": true,
+        "is_active_toggle": true
+      },
+      {
+        "id": 3,
+        "name": "Картой курьеру",
+        "icon": "https:\/\/cdn-mobile-backend.vkusvill.ru\/appn\/uiKtHnC6G9UYqLm9NpXpEOqlKub78NfBt6fCfIrV.png",
+        "has_email": true,
+        "has_bonus_payment": true,
+        "is_active": false,
+        "is_active_geo": false,
+        "is_active_toggle": true
+      },
+      {
+        "id": 4,
+        "name": "Наличными",
+        "icon": "https:\/\/cdn-mobile-backend.vkusvill.ru\/appn\/caNBQM8n0xlFOwVg33rOcwa1l5n2Rtc6rJk9XN0U.png",
+        "has_email": false,
+        "has_bonus_payment": true,
+        "is_active": false,
+        "is_active_geo": false,
+        "is_active_toggle": true
+      }
+    ],
+    "bonuses": [],
+    "user_cards": [
+      {
+        "id": 102,
+        "pan": "220070XXXXXX2050",
+        "payment_system": "MIR",
+        "pay_type": 0,
+        "bank_name": "Tinkoff Bank",
+        "is_default": true,
+        "spasibo_amount": 0,
+        "is_promote_spasibo": false
+      },
+      {
+        "id": 101,
+        "pan": "220070XXXXXX6783",
+        "payment_system": "MIR",
+        "pay_type": 0,
+        "bank_name": "Tinkoff Bank",
+        "is_default": false,
+        "spasibo_amount": 0,
+        "is_promote_spasibo": false
+      }
+    ],
+    "update_message": "",
+    "test": []
+  },
+  "errors": [],
+  "status": "success"
+}
+
