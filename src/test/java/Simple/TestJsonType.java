@@ -18,7 +18,7 @@ public class TestJsonType {
     public void testJsonFieldTypes() {
         try {
             // Чтение содержимого JSON файла
-            String jsonString = new String(Files.readAllBytes(Paths.get("response_151.json")));
+            String jsonString = new String(Files.readAllBytes(Paths.get("response_100.json")));
             JSONObject jsonObject = new JSONObject(jsonString);
             JSONObject data = jsonObject.getJSONObject("data");
             JSONObject cart = data.getJSONObject("cart");

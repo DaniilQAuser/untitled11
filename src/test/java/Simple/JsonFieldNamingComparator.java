@@ -17,9 +17,9 @@ public class JsonFieldNamingComparator {
                     "--header", "x-vkusvill-device: xiaomi",
                     "--header", "x-vkusvill-source: 4",
                     "--header", "x-vkusvill-version: 3.0.22 (300022)",
-                    "--header", "x-vkusvill-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJjYXJkIjoiTzY2NTAzNCIsInZlcnNpb24iOjJ9.EMxW-3eu4rN_n6KfvDm-sRZtGq2J9J0GBHHUEbl_6sIQFU4Xw58rNUpmz9w6_klhlsk06SERIqU1ekvoFs6yFeS2JhNzHh77ZjCET9vdJCmyMuphEDz8_YOu3ZQ8mgZWWy5Dr4bCKCxQGjV-TO9hqQ-7ViyBNidObaiQa3uXszc",
+                    "--header", "x-vkusvill-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJjYXJkIjoiSjAyOTM2MCIsInZlcnNpb24iOjJ9.SR1Px_6UFkbHcCbroPwt0hrvzeqou3XQbaktD8INWMGSbCtHBPTHDOd5ucmllIma1dYBkCyDW8CrN6b5JglsBhYujImfT4h2o-5ZLSrSULPd7PtFuuvWlAgEjBwjCSYmQtOXr5QHZKGWZkDBL52KpXiYkKPOQmI2Nn2e-qchQZg",
                     "--header", "x-vkusvill-model: Xiaomi Redmi Note 8 Pro",
-                    "--header", "x-vkusvill-number: o665034"
+                    "--header", "x-vkusvill-number: J029360"
             );
 
             // Установка перенаправления стандартного вывода и стандартной ошибки в потоки Java
